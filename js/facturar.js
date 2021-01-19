@@ -1,10 +1,5 @@
 var arregloProductos = [];
 
-setTimeout(()=>{
-  $(".ms-preload").hide(100);
-  $(".ms-site-container").fadeIn(1000);
-},2500);
-
 $(document).ready(()=>{
 
   $("#producto").select2({
