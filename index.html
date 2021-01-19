@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#333">
+  <title>Material Style</title>
+  <meta name="description" content="Material Style Theme">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=3">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="assets/css/preload.min.css">
+  <link rel="stylesheet" href="assets/css/plugins.min.css">
+  <link rel="stylesheet" href="assets/css/style.light-blue-500.min.css">
+</head>
+<body>
+  <div id="ms-preload" class="ms-preload">
+    <div id="status">
+      <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="ms-site-container">
+    <div class="container">
+      <img src="img/intro.png" alt="Logo" width="100%">
+      <h1 class="text-center">Sistema de Facturación</h1>
+      <div class="alert alert-black" role="alert" style="display: none;" id="autenticar">
+        <button type="button" class="close" aria-label="Close"><i class="zmdi zmdi-close"></i></button>
+        <strong class="text-center"><i class="zmdi zmdi-load"></i> Autenticando</strong>
+        <span class="loading-dots">
+          <span class="dot one">.</span><span class="dot two">.</span><span class="dot three">.</span>
+        </span>
+      </div>
+      <form autocomplete="off" action="javascript:void(0);">
+        <fieldset>
+          <div class="form-group label-floating">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+              <label class="control-label" for="ms-form-user">Usuario</label>
+              <input type="text" id="ms-form-user" class="form-control">
+            </div>
+          </div>
+          <div class="form-group label-floating">
+           <div class="input-group">
+             <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+             <label class="control-label" for="ms-form-pass">Contraseña</label>
+             <input type="password" id="ms-form-pass" class="form-control">
+           </div>
+         </div>
+         <div class="row mt-2">
+          <div class="col-md-6 mb-5">
+           <button class="btn btn-raised btn-primary btn-block" onclick="autenticar()">Ingresar</button>
+         </div>
+       </div>
+     </fieldset>
+   </form>  
+ </div>
+</div>
+<script src="assets/js/plugins.min.js"></script>
+<script src="assets/js/app.min.js"></script>
+<script src="assets/js/index.js"></script>
+<script>
+  function autenticar(){
+    $('#autenticar').fadeIn(500);
+    setTimeout(function() { 
+      $('#autenticar').fadeOut(1000,window.location.href='facturar'); 
+    }, 3500);
+  }
+</script>
+<style>
+  .loading-dots {
+    text-align: center;
+    z-index: 5;
+    font-size: 2.5rem
+  }
+  .loading-dots .dot {
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    opacity: 0;
+    -webkit-animation: showHideDot 1.5s ease-in-out infinite;
+    animation: showHideDot 1.5s ease-in-out infinite;
+  }
+  .loading-dots .dot.one {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+  }
+  .loading-dots .dot.two {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+  .loading-dots .dot.three {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+  }
+
+  @-webkit-keyframes showHideDot {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes showHideDot {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
+</body>
+</html>

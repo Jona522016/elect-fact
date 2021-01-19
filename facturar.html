@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#333">
+  <title>Material Style</title>
+  <meta name="description" content="Material Style Theme">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=3">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="assets/css/preload.min.css">
+  <link rel="stylesheet" href="assets/css/plugins.min.css">
+  <link rel="stylesheet" href="assets/css/style.light-blue-500.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="ms-preload">
+    <div>
+      <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+      </div>
+      <div class="under-spinner">
+        <h5 class="mx-auto">Obteniendo Productos</h5>
+      </div>
+    </div>
+  </div>
+  <div class="ms-site-container" style="display: none;">
+    <div class="container mt-5">  
+      <div class="togglebutton">
+        <label>
+          <input type="checkbox" onclick="cambiarVista()"> Un solo botón
+        </label>
+      </div>   
+      <form action="javascript:void(0);">
+        <div class="form-group mt-0">
+          <div class="input-group">
+            <label class="control-label" for="nombre">Nombre del Cliente</label>
+            <div class="input-group">
+              <input type="text" id="nombre" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="form-group  mt-0">
+          <div class="input-group">
+            <label class="control-label" for="nombre">Nit</label>
+            <div class="input-group">
+              <input type="text" id="nit" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="form-group  mt-0">
+          <div class="input-group">
+            <label class="control-label" for="nombre">Dirección</label>
+            <div class="input-group">
+              <input type="text" id="direccion" class="form-control">
+            </div>
+          </div>
+        </div>        
+        <div class="form-group  mt-0">
+          <label for="producto" class="control-label" style="font-size: 1.5rem;">Productos</label>
+          <div class="input-group">
+            <select name="producto" id="producto" class="select2"></select>              
+          </div>
+        </div>
+        <div class="form-group mt-0" id="_1">
+          <label class="control-label" for="cantidad"  style="font-size: 1.5rem;">Cantidad</label>
+          <div class="input-group">
+            <input type="number" id="cantidad" class="form-control">
+            <span class="input-group-btn"><button class="btn btn-primary" type="button">Agregar</button></span>
+          </div>  
+        </div>
+        <div class="form-group mt-0" id="_2" style="display: none;">
+          <button class="btn btn-primary btn-raised btn-block">Agregar</button>
+        </div>
+      </form>        
+    </div>
+    <h1 class="right-line mb-2">Detalle</h1>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table mt-1 mb-3">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>                
+              <td>1</td>                
+              <td>Juego de camisa y pantalon</td>                
+              <td>17.00</td>                
+              <td class="text-center"><i class="fa fa-trash text-danger" style="font-size: 2rem;"></i></td>                
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <h3><strong>Total:</strong> <span class="color-primary">$2456.45</span></h3>
+      <a href="javascript:void(0)" class="btn btn-raised btn-primary btn-block btn-raised mt-2 no-mb"><i class="zmdi zmdi-shopping-cart-plus"></i> Purchase</a>
+    </div>
+  </div>
+</div>
+</div>
+<script src="assets/js/plugins.min.js"></script>
+<script src="assets/js/app.min.js"></script>
+<script src="assets/js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script>
+  $(document).ready(()=>{
+    $("#producto").select2({
+      placeholder: "Elija una opción"
+      ,width:"100%"
+    })
+  });
+  setTimeout(()=>{
+    $(".ms-preload").hide(100);
+    $(".ms-site-container").fadeIn(1000);
+  },2/*500*/);
+
+  function cambiarVista() {
+    if($("#_1").is(":visible")){
+      $("#_1").hide(100)        
+      $("#_2").show(100)
+    }else{
+      $("#_2").hide(100)        
+      $("#_1").show(100)
+    }      
+  }
+</script>
+<style>
+  .under-spinner{
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 100;
+  }
+</style>
+</body>
+</html>
+
