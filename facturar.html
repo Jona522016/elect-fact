@@ -28,34 +28,31 @@
     </div>
   </div>
   <div class="ms-site-container" style="display: none;">
-    <div class="container mt-5">  
+    <div class="container mt-5 ">  
       <div class="togglebutton">
         <label>
           <input type="checkbox" onclick="cambiarVista()"> Un solo botón
         </label>
       </div>   
       <form action="javascript:void(0);">
-        <div class="form-group mt-0">
+        <div class="form-group">
           <div class="input-group">
-            <label class="control-label" for="nombre">Nombre del Cliente</label>
             <div class="input-group">
-              <input type="text" id="nombre" class="form-control">
+              <input type="text" id="nombre" class="form-control" placeholder="Nombre del Cliente">
             </div>
           </div>
         </div>
         <div class="form-group  mt-0">
           <div class="input-group">
-            <label class="control-label" for="nombre">Nit</label>
             <div class="input-group">
-              <input type="text" id="nit" class="form-control">
+              <input type="text" id="nit" class="form-control" placeholder="Nit">
             </div>
           </div>
         </div>
         <div class="form-group  mt-0">
           <div class="input-group">
-            <label class="control-label" for="nombre">Dirección</label>
             <div class="input-group">
-              <input type="text" id="direccion" class="form-control">
+              <input type="text" id="direccion" class="form-control" placeholder="Dirección">
             </div>
           </div>
         </div>        
@@ -65,15 +62,14 @@
             <select name="producto" id="producto" class="select2"></select>              
           </div>
         </div>
-        <div class="form-group mt-0" id="_1">
-          <label class="control-label" for="cantidad"  style="font-size: 1.5rem;">Cantidad</label>
+        <div class="form-group mt-1" id="_1">
           <div class="input-group">
-            <input type="number" id="cantidad" class="form-control">
-            <span class="input-group-btn"><button class="btn btn-primary" type="button">Agregar</button></span>
+            <input type="number" id="cantidad" class="form-control" placeholder="Cantidad">
+            <span class="input-group-btn"><button class="btn btn-primary" type="button" onclick="agregar(false)">Agregar</button></span>
           </div>  
         </div>
         <div class="form-group mt-0" id="_2" style="display: none;">
-          <button class="btn btn-primary btn-raised btn-block">Agregar</button>
+          <button class="btn btn-primary btn-raised btn-block" onclick="agregar(true)">Agregar</button>
         </div>
       </form>        
     </div>
@@ -89,20 +85,15 @@
               <th>Eliminar</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>                
-              <td>1</td>                
-              <td>Juego de camisa y pantalon</td>                
-              <td>17.00</td>                
-              <td class="text-center"><i class="fa fa-trash text-danger" style="font-size: 2rem;"></i></td>                
-            </tr>
+          <tbody id="detalle">
           </tbody>
         </table>
       </div>
     </div>
-    <div class="col-sm-12">
-      <h3><strong>Total:</strong> <span class="color-primary">$2456.45</span></h3>
-      <a href="javascript:void(0)" class="btn btn-raised btn-primary btn-block btn-raised mt-2 no-mb"><i class="zmdi zmdi-shopping-cart-plus"></i> Purchase</a>
+    <hr>
+    <div class="col-sm-12 mb-1">
+      <h3><strong>Total:</strong> <span class="color-primary" id="total"></span></h3>
+      <a href="javascript:void(0)" class="btn btn-raised btn-primary btn-block btn-raised mt-2 no-mb"><i class="zmdi zmdi-archive"></i> Emitir Factura</a>
     </div>
   </div>
 </div>
@@ -111,28 +102,7 @@
 <script src="assets/js/app.min.js"></script>
 <script src="assets/js/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-<script>
-  $(document).ready(()=>{
-    $("#producto").select2({
-      placeholder: "Elija una opción"
-      ,width:"100%"
-    })
-  });
-  setTimeout(()=>{
-    $(".ms-preload").hide(100);
-    $(".ms-site-container").fadeIn(1000);
-  },2/*500*/);
-
-  function cambiarVista() {
-    if($("#_1").is(":visible")){
-      $("#_1").hide(100)        
-      $("#_2").show(100)
-    }else{
-      $("#_2").hide(100)        
-      $("#_1").show(100)
-    }      
-  }
-</script>
+<script src="js/facturar.js"></script>
 <style>
   .under-spinner{
     position: absolute;

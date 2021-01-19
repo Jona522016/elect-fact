@@ -28,26 +28,28 @@
       <img src="img/intro.png" alt="Logo" width="100%">
       <h1 class="text-center">Sistema de Facturación</h1>
       <div class="alert alert-black" role="alert" style="display: none;" id="autenticar">
-        <button type="button" class="close" aria-label="Close"><i class="zmdi zmdi-close"></i></button>
         <strong class="text-center"><i class="zmdi zmdi-load"></i> Autenticando</strong>
         <span class="loading-dots">
           <span class="dot one">.</span><span class="dot two">.</span><span class="dot three">.</span>
         </span>
+      </div>
+      <div class="alert" role="alert" style="display: none; background-color: #c11d1d;" id="rellenar">
+        <span><i class="zmdi zmdi-load"></i> Debe rellenar el <b>usuario</b> y <b>contraseña</b></span>
       </div>
       <form autocomplete="off" action="javascript:void(0);">
         <fieldset>
           <div class="form-group label-floating">
             <div class="input-group">
               <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
-              <label class="control-label" for="ms-form-user">Usuario</label>
-              <input type="text" id="ms-form-user" class="form-control">
+              <label class="control-label" for="usuario">Usuario</label>
+              <input type="text" id="usuario" class="form-control">
             </div> 
           </div>
           <div class="form-group label-floating">
            <div class="input-group">
              <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
-             <label class="control-label" for="ms-form-pass">Contraseña</label>
-             <input type="password" id="ms-form-pass" class="form-control">
+             <label class="control-label" for="clave">Contraseña</label>
+             <input type="password" id="clave" autocomplete="cc-csc" class="form-control">
            </div>
          </div>
          <div class="row mt-2">
@@ -64,10 +66,17 @@
 <script src="assets/js/index.js"></script>
 <script>
   function autenticar(){
-    $('#autenticar').fadeIn(500);
-    setTimeout(function() { 
-      $('#autenticar').fadeOut(1000,window.location.href='facturar'); 
-    }, 3500);
+    if($("#usuario").val().trim() == "" && $("#clave").val().trim() == "" ){
+      $('#rellenar').fadeIn(500);
+      setTimeout(function() { 
+        $('#rellenar').fadeOut(1000); 
+      }, 3500);
+    }else{
+      $('#autenticar').fadeIn(500);
+      setTimeout(function() { 
+        $('#autenticar').fadeOut(1000,window.location.href='facturar'); 
+      }, 3500);
+    }
   }
 </script>
 <style>
